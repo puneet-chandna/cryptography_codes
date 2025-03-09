@@ -1,11 +1,7 @@
-
-import random
 import hashlib
-import socket
 import json
-import time
 
-# Colors for better visualization
+
 class Colors:
     HEADER = '\033[95m'
     BLUE = '\033[94m'    # Client
@@ -30,7 +26,7 @@ def encrypt_message(message, key):
     """Simple XOR encryption for demonstration"""
     encrypted = []
     for i in range(len(message)):
-        # XOR each character with corresponding key character
+        
         key_char = ord(key[i % len(key)])
         msg_char = ord(message[i])
         encrypted.append(chr(msg_char ^ key_char))
@@ -38,7 +34,7 @@ def encrypt_message(message, key):
 
 def decrypt_message(encrypted, key):
     """Decrypt XOR encrypted message"""
-    # XOR is symmetric, so encryption and decryption are the same
+   
     return encrypt_message(encrypted, key)
 
 def send_data(sock, data):
@@ -58,11 +54,9 @@ def receive_data(sock):
             if not chunk:
                 break
             data += chunk
-            # Try to parse the data to see if we have a complete message
             try:
                 return json.loads(data.decode())
             except json.JSONDecodeError:
-                # If we can't parse yet, continue receiving
                 continue
     except Exception as e:
         print(f"Error receiving data: {e}")
