@@ -84,6 +84,8 @@ const uint32_t Rcon[10] = {
     0x10000000, 0x20000000, 0x40000000, 0x80000000,
     0x1B000000, 0x36000000
 };
+hii bhootni k
+
 
 // --- Helper Functions for AES ---
 uint32_t RotWord(uint32_t word) {
@@ -155,8 +157,7 @@ void InvShiftRows(State state) {
     state[1][2] = state[1][1];
     state[1][1] = state[1][0];
     state[1][0] = temp;
-    
-    // Row 2: right shift by 2
+
     swap(state[2][0], state[2][2]);
     swap(state[2][1], state[2][3]);
     
